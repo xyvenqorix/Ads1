@@ -1,0 +1,583 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a0f">
+  <title>Rodol Wallet — Fidelización</title>
+  <link rel="stylesheet" href="includes/style.css">
+</head><body>  <aside class="sidebar" id="sidebar"><div class="brand">
+  <span class="brand-mark">R</span>
+  <span>Rodol Wallet</span>
+</div>
+
+<nav>
+  <button class="nav-item active" data-section="dashboard">
+    ⌂ <span>Dashboard</span>
+  </button>
+
+  <button class="nav-item" data-section="cards">
+    🎫 <span>Tarjetas</span>
+  </button>
+
+  <button class="nav-item" data-section="customers">
+    👥 <span>Clientes</span>
+  </button>
+
+  <button class="nav-item" data-section="points">
+    ⭐ <span>Puntos</span>
+  </button>
+
+  <button class="nav-item" data-section="offers">
+    🎟️ <span>Cupones</span>
+  </button>
+
+  <button class="nav-item" data-section="notifications">
+    🔔 <span>Cuñas</span>
+  </button>
+
+  <button class="nav-item" data-section="api">
+    ⌘ <span>API</span>
+  </button>
+</nav>
+
+<div class="sidebar-bottom">
+  <div class="mini-status">
+    <i></i> Sistema local activo
+  </div>
+
+  <button id="resetData" class="danger-link">
+    Restablecer demo
+  </button>
+</div>
+
+  </aside>  <main class="main"><header class="topbar">
+
+  <button id="menuBtn" class="icon-btn">
+    ☰
+  </button>
+
+  <div>
+    <div class="eyebrow">
+      PLATAFORMA DE FIDELIZACIÓN
+    </div>
+
+    <h1 id="pageTitle">
+      Dashboard
+    </h1>
+  </div>
+
+  <div class="top-actions">
+
+    <button class="icon-btn" data-section="notifications">
+      🔔
+      <b id="notifBadge">0</b>
+    </button>
+
+    <div class="avatar">
+      R
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="section active">
+
+  <div class="hero">
+
+    <div>
+
+      <span class="pill">
+        ● LISTO PARA USAR
+      </span>
+
+      <h2>
+        Crea relaciones que vuelven.
+      </h2>
+
+      <p>
+        Administra tarjetas digitales, puntos, cupones y promociones
+        desde un solo lugar.
+      </p>
+
+      <button class="primary" data-section="cards">
+        + Crear tarjeta
+      </button>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <div class="card-brand">
+        EL LAUREL
+      </div>
+
+      <div class="card-points">
+        1,250
+        <small>PTS</small>
+      </div>
+
+      <div class="card-name">
+        Cliente VIP
+      </div>
+
+      <div class="card-code">
+        •••• 2480
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+      <span>Clientes</span>
+      <strong id="statCustomers">0</strong>
+      <small>registrados</small>
+    </div>
+
+    <div class="stat">
+      <span>Tarjetas</span>
+      <strong id="statCards">0</strong>
+      <small>activas</small>
+    </div>
+
+    <div class="stat">
+      <span>Puntos emitidos</span>
+      <strong id="statPoints">0</strong>
+      <small>en total</small>
+    </div>
+
+    <div class="stat">
+      <span>Cupones</span>
+      <strong id="statOffers">0</strong>
+      <small>creados</small>
+    </div>
+
+  </div>
+
+
+  <div class="grid-2">
+
+    <div class="panel">
+
+      <div class="panel-head">
+
+        <div>
+          <h3>Actividad reciente</h3>
+          <p>Últimos movimientos del sistema</p>
+        </div>
+
+      </div>
+
+      <div id="activity" class="activity"></div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-head">
+
+        <div>
+          <h3>Tu tarjeta</h3>
+          <p>Vista previa del cliente</p>
+        </div>
+
+      </div>
+
+
+      <div class="wallet-preview">
+
+        <div class="wallet-top">
+          <span>EL LAUREL</span>
+          <span>LOYALTY</span>
+        </div>
+
+        <strong id="previewPoints">
+          1,250
+        </strong>
+
+        <small>
+          PUNTOS
+        </small>
+
+        <div class="wallet-bottom">
+          <span>Cliente VIP</span>
+          <span>•••• 2480</span>
+        </div>
+
+      </div>
+
+
+      <div class="wallet-buttons">
+
+        <button class="wallet apple">
+           Añadir a Apple Wallet
+        </button>
+
+        <button class="wallet google">
+          ▣ Añadir a Google Wallet
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TARJETAS -->
+
+<section id="cards" class="section">
+
+  <div class="section-head">
+
+    <div>
+      <h2>Tarjetas</h2>
+      <p>
+        Crea y administra tarjetas de fidelización.
+      </p>
+    </div>
+
+    <button class="primary" id="newCardBtn">
+      + Nueva tarjeta
+    </button>
+
+  </div>
+
+  <div class="panel">
+
+    <div id="cardsList" class="table-wrap"></div>
+
+  </div>
+
+</section>
+
+
+<!-- CLIENTES -->
+
+<section id="customers" class="section">
+
+  <div class="section-head">
+
+    <div>
+      <h2>Clientes</h2>
+      <p>
+        Tu base de clientes y sus puntos.
+      </p>
+    </div>
+
+    <button class="primary" id="newCustomerBtn">
+      + Nuevo cliente
+    </button>
+
+  </div>
+
+  <div class="panel">
+
+    <div id="customersList" class="table-wrap"></div>
+
+  </div>
+
+</section>
+
+
+<!-- PUNTOS -->
+
+<section id="points" class="section">
+
+  <div class="section-head">
+
+    <div>
+      <h2>Puntos</h2>
+      <p>
+        Suma o descuenta puntos de una tarjeta.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="grid-2">
+
+    <div class="panel form-panel">
+
+      <h3>
+        Movimiento de puntos
+      </h3>
+
+      <label>
+        Cliente
+        <select id="pointCustomer"></select>
+      </label>
+
+      <label>
+        Cantidad
+        <input
+          id="pointAmount"
+          type="number"
+          min="1"
+          placeholder="100"
+        >
+      </label>
+
+      <label>
+        Motivo
+        <input
+          id="pointReason"
+          placeholder="Compra en el negocio"
+        >
+      </label>
+
+      <div class="form-actions">
+
+        <button class="primary" id="addPoints">
+          + Añadir
+        </button>
+
+        <button class="secondary" id="removePoints">
+          − Descontar
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <h3>
+        Historial
+      </h3>
+
+      <div id="pointsHistory" class="activity"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CUPONES -->
+
+<section id="offers" class="section">
+
+  <div class="section-head">
+
+    <div>
+      <h2>Cupones</h2>
+
+      <p>
+        Crea descuentos y promociones para tus clientes.
+      </p>
+    </div>
+
+    <button class="primary" id="newOfferBtn">
+      + Crear cupón
+    </button>
+
+  </div>
+
+  <div id="offersGrid" class="offer-grid"></div>
+
+</section>
+
+
+<!-- NOTIFICACIONES -->
+
+<section id="notifications" class="section">
+
+  <div class="section-head">
+
+    <div>
+
+      <h2>
+        Cuñas y notificaciones
+      </h2>
+
+      <p>
+        Prepara mensajes promocionales para las tarjetas.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="grid-2">
+
+    <div class="panel form-panel">
+
+      <h3>
+        Nueva cuña
+      </h3>
+
+      <label>
+        Título
+
+        <input
+          id="notifTitle"
+          placeholder="🔥 Puntos dobles hoy"
+        >
+      </label>
+
+      <label>
+        Mensaje
+
+        <textarea
+          id="notifMessage"
+          placeholder="Visítanos hoy y recibe el doble de puntos."
+        ></textarea>
+      </label>
+
+      <label>
+        Destino
+
+        <select id="notifTarget">
+          <option>Todos los clientes</option>
+          <option>Clientes VIP</option>
+        </select>
+
+      </label>
+
+      <button class="primary" id="sendNotif">
+        Programar cuña
+      </button>
+
+      <div class="notice">
+        En esta versión demo el mensaje se guarda localmente.
+        El envío real a Wallet requiere backend y credenciales oficiales.
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <h3>
+        Historial de cuñas
+      </h3>
+
+      <div id="notificationsList" class="activity"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- API -->
+
+<section id="api" class="section">
+
+  <div class="section-head">
+
+    <div>
+
+      <h2>
+        API
+      </h2>
+
+      <p>
+        Panel visual para preparar tu futura API REST.
+      </p>
+
+    </div>
+
+    <button class="primary" id="generateKey">
+      Generar API Key
+    </button>
+
+  </div>
+
+
+  <div class="panel">
+
+    <div class="api-key">
+
+      <code id="apiKey">
+        rw_demo_XXXXXXXXXXXXXXXXXXXXXXXX
+      </code>
+
+      <button id="copyKey" class="secondary">
+        Copiar
+      </button>
+
+    </div>
+
+
+    <h3>
+      Endpoints preparados
+    </h3>
+
+    <div class="endpoint">
+      <b>POST</b>
+      <code>/api/customers</code>
+      <span>Crear cliente</span>
+    </div>
+
+    <div class="endpoint">
+      <b>POST</b>
+      <code>/api/cards</code>
+      <span>Crear tarjeta</span>
+    </div>
+
+    <div class="endpoint">
+      <b>POST</b>
+      <code>/api/cards/:id/points</code>
+      <span>Modificar puntos</span>
+    </div>
+
+    <div class="endpoint">
+      <b>POST</b>
+      <code>/api/cards/:id/coupons</code>
+      <span>Crear cupón</span>
+    </div>
+
+    <div class="endpoint">
+      <b>POST</b>
+      <code>/api/notifications</code>
+      <span>Crear cuña</span>
+    </div>
+
+    <div class="endpoint">
+      <b>GET</b>
+      <code>/api/cards/:id/apple-wallet</code>
+      <span>Generar pase Apple</span>
+    </div>
+
+    <div class="endpoint">
+      <b>GET</b>
+      <code>/api/cards/:id/google-wallet</code>
+      <span>Generar enlace Google</span>
+    </div>
+
+  </div>
+
+</section>
+
+  </main>  <!-- MODAL -->  <div id="modal" class="modal"><div class="modal-box">
+
+  <button class="close" id="closeModal">
+    ×
+  </button>
+
+  <h2 id="modalTitle"></h2>
+
+  <div id="modalBody"></div>
+
+</div>
+
+  </div>  <div id="toast" class="toast"></div>  <script src="includes/app.js"></script></body>
+</html>
